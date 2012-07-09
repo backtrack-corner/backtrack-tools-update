@@ -247,22 +247,22 @@ if [ $SILENT -eq 0 ]; then log_action_end_msg $RES; fi
 ############################
 # Upgrade del DB exploitdb #
 ############################
-MSG="upgrading ExploitDB"
-ENDMSG="finished $MSG"
-if [ $SILENT -eq 0 ]; then log_action_begin_msg $MSG; fi
-
-log_to_file $INFO $MSG
-exec_command "wget --no-verbose -c http://www.exploit-db.com/archive.tar.bz2 -P /pentest/exploits/exploitdb/"
-FIRST_RES=$?
-exec_command "tar -mxjf /pentest/exploits/exploitdb/archive.tar.bz2 -C /pentest/exploits/exploitdb/"
-SECOND_RES=$?
-exec_command "rm -rf /pentest/exploits/exploitdb/archive.tar.bz2"
-THIRD_RES=$?
-log_to_file $INFO $ENDMSG
-
-if [ $SILENT -eq 0 ]; then
-  log_action_end_msg $((FIRST_RES + SECOND_RES + THIRD_RES))
-fi
+#MSG="upgrading ExploitDB"
+#ENDMSG="finished $MSG"
+#if [ $SILENT -eq 0 ]; then log_action_begin_msg $MSG; fi
+#
+#log_to_file $INFO $MSG
+#exec_command "wget --no-verbose -c http://www.exploit-db.com/archive.tar.bz2 -P /pentest/exploits/exploitdb/"
+#FIRST_RES=$?
+#exec_command "tar -mxjf /pentest/exploits/exploitdb/archive.tar.bz2 -C /pentest/exploits/exploitdb/"
+#SECOND_RES=$?
+#exec_command "rm -rf /pentest/exploits/exploitdb/archive.tar.bz2"
+#THIRD_RES=$?
+#log_to_file $INFO $ENDMSG
+#
+#if [ $SILENT -eq 0 ]; then
+#  log_action_end_msg $((FIRST_RES + SECOND_RES + THIRD_RES))
+#fi
 
 #################################
 # Upgrade nessus-update-plugins #

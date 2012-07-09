@@ -264,6 +264,20 @@ if [ $SILENT -eq 0 ]; then
   log_action_end_msg $((FIRST_RES + SECOND_RES + THIRD_RES))
 fi
 
+###############
+# Upgrade SET #
+###############
+MSG="upgrading S.E.T."
+ENDMSG="finished $MSG"
+if [ $SILENT -eq 0 ]; then log_action_begin_msg $MSG; fi
+
+log_to_file $INFO $MSG
+exec_command "cd /pentest/exploits/set && svn update"
+RES=$?
+log_to_file $INFO $ENDMSG
+
+if [ $SILENT -eq 0 ]; then log_action_end_msg $RES; fi
+
 #################################
 # Upgrade nessus-update-plugins #
 #################################
@@ -321,6 +335,22 @@ SECOND_RES=$?
 log_to_file $INFO "Upgrade Airodump-NG finished"
 
 if [ $SILENT -eq 0 ]; then log_action_end_msg $((FIRST_RES + SECOND_RES)); fi
+
+############################
+# Upgrade WIFITE           #
+############################
+MSG="upgrading Wifite"
+ENDMSG="finished $MSG"
+if [ $SILENT -eq 0 ]; then log_action_begin_msg $MSG; fi
+
+log_to_file $INFO $MSG
+exec_command "wget --no-verbose -c http://wifite.googlecode.com/svn/trunk/wifite.py -P /pentest/wireless/wifite/"
+FIRST_RES=$?
+exec_command "chmod +x /pentest/wireless/wifite/wifite.py"
+SECOND_RES=$?
+log_to_file $INFO $ENDMSG
+
+if [ $SILENT -eq 0 ]; then log_action_end_msg $((FIRST_RES + SECOND_RES + THIRD_RES)); fi
 
 ################################
 # Completing the script output #

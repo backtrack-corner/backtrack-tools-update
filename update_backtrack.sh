@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# System update script for BT
+# System update script for BackTrack
 # by Fabio "dr4kk4r" Busico & Armando "armax00" Miraglia
 # v0.4.0
 #

@@ -238,7 +238,7 @@ ENDMSG="finished $MSG"
 if [ $SILENT -eq 0 ]; then log_action_begin_msg $MSG; fi
 
 log_to_file $INFO $MSG
-exec_command "/pentest/database/sqlmap/sqlmap.py --update"
+exec_command "cd /pentest/database/sqlmap && ./sqlmap.py --update"
 RES=$?
 log_to_file $INFO $ENDMSG
 

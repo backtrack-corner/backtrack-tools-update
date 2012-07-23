@@ -314,6 +314,8 @@ ENDMSG="finished $MSG"
 if [ $SILENT -eq 0 ]; then log_action_begin_msg $MSG; fi
 
 log_to_file $INFO $MSG
+exec_command "find /usr/local/share/nmap/scripts -type f | xargs -d "\n" tar -czvf /usr/local/share/nmap/scripts.tar.gz"
+exec_command "rm -rf /usr/local/share/nmap/scripts"
 exec_command "svn co --force https://svn.nmap.org/nmap/scripts/ /usr/local/share/nmap/scripts"
 RES=$?
 log_to_file $INFO $ENDMSG
